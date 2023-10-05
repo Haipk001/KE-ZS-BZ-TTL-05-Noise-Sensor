@@ -1,10 +1,8 @@
-
-```markdown
 # Arduino Noise Sensor with KE-ZS-BZ-TTL-05
 
 ![Arduino Noise Sensor](sensor.jpg)
 
-This Arduino project allows you to measure noise levels using the KE-ZS-BZ-TTL-05 Noise Sensor. It communicates with the sensor through AltSoftSerial and calculates the noise level in decibels (dB).
+This Arduino project enables you to measure noise levels using the KE-ZS-BZ-TTL-05 Noise Sensor. It communicates with the sensor through AltSoftSerial and calculates the noise level in decibels (dB).
 
 ## Table of Contents
 
@@ -38,33 +36,26 @@ Connect the KE-ZS-BZ-TTL-05 Noise Sensor to your Arduino as follows:
 
 ## Usage
 
-1. Upload the Arduino sketch to your Arduino board.
+1. Upload the Arduino sketch provided in this repository to your Arduino board.
 2. Open the Arduino Serial Monitor.
-3. You will see the noise level displayed in decibels (dB) in the Serial Monitor.
+3. The Serial Monitor will display the noise level in decibels (dB) in real-time.
 
 ## Hex Command Format
 
 The project sends the following hex command to the sensor to request noise level data:
 
-```
+```hex
 0x01 0x03 0x00 0x00 0x00 0x01 0x84 0x0A
-```
+This command initiates the sensor to provide noise level data.
 
-## Data Receive Format
+Data Receive Format
+The data received from the sensor is in the following format:
+0x01 0x03 0x02 0x02 [Data_High] [Data_Low] [Checksum]
+Where [Data_High] and [Data_Low] represent the noise level reading in decibels (dB).
 
-The sensor responds with data in the following format:
+Response Time
+The sensor has two response time modes:
 
-```
-0x01 0x03 0x02 0x02 0xC9 0x79 0x72
-```
-
-Where `0x02 0xC9` is the reading value of noise, which corresponds to 71.3 dB.
-
-## Response Time
-
-The response time of the sensor depends on the mode:
-
-- Fast Mode: 500ms
-- Slow Mode: 1.5 seconds
-
-You can set the delay in the Arduino sketch accordingly.
+Fast Mode: 500ms
+Slow Mode: 1.5 seconds
+You can set the delay in your Arduino sketch based on the desired response time mode.
