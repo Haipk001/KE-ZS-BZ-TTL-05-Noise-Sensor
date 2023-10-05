@@ -1,3 +1,4 @@
+
 # Arduino Noise Sensor with KE-ZS-BZ-TTL-05
 
 ![Arduino Noise Sensor](sensor.jpg)
@@ -44,6 +45,8 @@ The project sends the following hex command to the sensor to request noise level
 
 ```hex
 0x01 0x03 0x00 0x00 0x00 0x01 0x84 0x0A
+```
+
 This command initiates the sensor to provide noise level data.
 
 ## Data Receive Format
@@ -65,4 +68,3 @@ The sensor provides two response time options:
 - Slow Mode: Set the delay to 1.5 seconds for slower but more stable responses.
 
 You can adjust the delay in your Arduino sketch to match your desired response time.
-
