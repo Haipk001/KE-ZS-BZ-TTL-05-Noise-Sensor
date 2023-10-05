@@ -1,10 +1,9 @@
 
-```markdown
 # Arduino Noise Sensor with KE-ZS-BZ-TTL-05
 
 ![Arduino Noise Sensor](sensor.jpg)
 
-This Arduino project allows you to measure noise levels using the KE-ZS-BZ-TTL-05 Noise Sensor. It communicates with the sensor through AltSoftSerial and calculates the noise level in decibels (dB).
+This Arduino project enables you to measure noise levels using the KE-ZS-BZ-TTL-05 Noise Sensor. It communicates with the sensor through AltSoftSerial and calculates the noise level in decibels (dB).
 
 ## Table of Contents
 
@@ -14,8 +13,6 @@ This Arduino project allows you to measure noise levels using the KE-ZS-BZ-TTL-0
 - [Hex Command Format](#hex-command-format)
 - [Data Receive Format](#data-receive-format)
 - [Response Time](#response-time)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Hardware Requirements
 
@@ -38,33 +35,36 @@ Connect the KE-ZS-BZ-TTL-05 Noise Sensor to your Arduino as follows:
 
 ## Usage
 
-1. Upload the Arduino sketch to your Arduino board.
+1. Upload the Arduino sketch provided in this repository to your Arduino board.
 2. Open the Arduino Serial Monitor.
-3. You will see the noise level displayed in decibels (dB) in the Serial Monitor.
+3. The Serial Monitor will display the noise level in decibels (dB) in real-time.
 
 ## Hex Command Format
 
 The project sends the following hex command to the sensor to request noise level data:
 
-```
+```hex
 0x01 0x03 0x00 0x00 0x00 0x01 0x84 0x0A
 ```
 
+This command initiates the sensor to provide noise level data.
+
 ## Data Receive Format
 
-The sensor responds with data in the following format:
+When requesting data from the sensor, it responds in the following format:
 
-```
-0x01 0x03 0x02 0x02 0xC9 0x79 0x72
-```
+- Response: `0x01 0x03 0x02 0x02 0xC9 0x79 0x72`
 
-Where `0x02 0xC9` is the reading value of noise, which corresponds to 71.3 dB.
+In this response:
+
+- `0x02 0xC9` represents the reading value of noise.
+- In this example, `02C9` translates to 713, which corresponds to a noise level of 71.3 dB.
 
 ## Response Time
 
-The response time of the sensor depends on the mode:
+The sensor provides two response time options:
 
-- Fast Mode: 500ms
-- Slow Mode: 1.5 seconds
+- Fast Mode: Set the delay to 500ms for faster responses.
+- Slow Mode: Set the delay to 1.5 seconds for slower but more stable responses.
 
-You can set the delay in the Arduino sketch accordingly.
+You can adjust the delay in your Arduino sketch to match your desired response time.
