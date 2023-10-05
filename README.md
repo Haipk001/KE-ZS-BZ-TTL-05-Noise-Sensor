@@ -48,12 +48,13 @@ The project sends the following hex command to the sensor to request noise level
 0x01 0x03 0x00 0x00 0x00 0x01 0x84 0x0A
 This command initiates the sensor to provide noise level data.
 
-Data Receive Format
+## Data Receive Format
 The data received from the sensor is in the following format:
+```hex
 0x01 0x03 0x02 0x02 [Data_High] [Data_Low] [Checksum]
 Where [Data_High] and [Data_Low] represent the noise level reading in decibels (dB).
 
-Response Time
+## Response Time
 The sensor has two response time modes:
 
 Fast Mode: 500ms
