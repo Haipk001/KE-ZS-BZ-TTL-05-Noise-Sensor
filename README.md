@@ -12,8 +12,6 @@ This Arduino project enables you to measure noise levels using the KE-ZS-BZ-TTL-
 - [Hex Command Format](#hex-command-format)
 - [Data Receive Format](#data-receive-format)
 - [Response Time](#response-time)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Hardware Requirements
 
@@ -49,14 +47,15 @@ The project sends the following hex command to the sensor to request noise level
 This command initiates the sensor to provide noise level data.
 
 ## Data Receive Format
+
 The data received from the sensor is in the following format:
 ```hex
 0x01 0x03 0x02 0x02 [Data_High] [Data_Low] [Checksum]
 Where [Data_High] and [Data_Low] represent the noise level reading in decibels (dB).
 
 ## Response Time
-The sensor has two response time modes:
 
+The sensor has two response time modes:
 Fast Mode: 500ms
 Slow Mode: 1.5 seconds
 You can set the delay in your Arduino sketch based on the desired response time mode.
