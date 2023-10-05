@@ -48,14 +48,21 @@ This command initiates the sensor to provide noise level data.
 
 ## Data Receive Format
 
-The data received from the sensor is in the following format:
-```hex
-0x01 0x03 0x02 0x02 [Data_High] [Data_Low] [Checksum]
-Where [Data_High] and [Data_Low] represent the noise level reading in decibels (dB).
+When requesting data from the sensor, it responds in the following format:
+
+- Response: `0x01 0x03 0x02 0x02 0xC9 0x79 0x72`
+
+In this response:
+
+- `0x02 0xC9` represents the reading value of noise.
+- In this example, `02C9` translates to 713, which corresponds to a noise level of 71.3 dB.
 
 ## Response Time
 
-The sensor has two response time modes:
-Fast Mode: 500ms
-Slow Mode: 1.5 seconds
-You can set the delay in your Arduino sketch based on the desired response time mode.
+The sensor provides two response time options:
+
+- Fast Mode: Set the delay to 500ms for faster responses.
+- Slow Mode: Set the delay to 1.5 seconds for slower but more stable responses.
+
+You can adjust the delay in your Arduino sketch to match your desired response time.
+
